@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Lift</string>
+
+    <!-- auth -->
+    <string name="auth_title">Welcome to Lift</string>
+    <string name="auth_login">Login</string>
+    <string name="auth_register">Register</string>
 </resources>
