@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "110324766926",
+    "project_id": "lift-3c826",
+    "storage_bucket": "lift-3c826.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110324766926:android:c6264fa27c32b69d8d189f",
+        "android_client_info": {
+          "package_name": "com.nguyendo.lift"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbKnB8t0ZxfBAkAznMGapfF7l1YDrc4yQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
