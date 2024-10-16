@@ -35,4 +35,6 @@ interface AuthRepo {
         email: String,
         password: String,
     ): Task<AuthResult>
+
+    fun logout()
 }

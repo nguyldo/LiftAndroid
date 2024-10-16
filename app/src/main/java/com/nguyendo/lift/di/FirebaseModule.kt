@@ -4,6 +4,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nguyendo.lift.data.repo.AuthRepo
 import com.nguyendo.lift.data.repo.AuthRepoImpl
+import com.nguyendo.lift.data.repo.UserRemoteRepo
+import com.nguyendo.lift.data.repo.UserRemoteRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +17,9 @@ import javax.inject.Singleton
 object FirebaseModule {
     @Provides
     fun provideAuthRepo(): AuthRepo = AuthRepoImpl(provideFirebaseAuth())
+
+    @Provides
+    fun provideUserRemoteRepo(): UserRemoteRepo = UserRemoteRepoImpl(provideFirebaseFirestore())
 
     @Provides
     @Singleton

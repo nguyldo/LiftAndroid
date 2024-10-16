@@ -31,14 +31,34 @@ fun OnboardingView(
             // Title
             Text(stringResource(R.string.auth_title))
 
-            // Login
-            Button(onClick = {}) {
-                Text(stringResource(R.string.auth_login))
-            }
+            if (viewModel.user() == null) {
+                // Login
+                Button(onClick = {
+                    viewModel.login(
+                        email = "nguyldo@gmail.com",
+                        password = "Test123$"
+                    )
+                }) {
+                    Text(stringResource(R.string.auth_login))
+                }
 
-            // Register
-            Button(onClick = {}) {
-                Text(stringResource(R.string.auth_register))
+                // Register
+                Button(onClick = {
+                    viewModel.register(
+                        email = "androidtest@test.com",
+                        password = "Test123$",
+                        username = "androidtest",
+                        name = "Android Test"
+                    )
+                }) {
+                    Text(stringResource(R.string.auth_register))
+                }
+            } else {
+                Button(onClick = {
+                    viewModel.signout()
+                }) {
+                    Text("Sign Out")
+                }
             }
         }
     }
