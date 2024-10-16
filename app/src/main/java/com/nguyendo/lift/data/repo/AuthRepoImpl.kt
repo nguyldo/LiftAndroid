@@ -22,4 +22,6 @@ class AuthRepoImpl
             email: String,
             password: String,
         ): Task<AuthResult> = firebaseAuth.createUserWithEmailAndPassword(email, password)
+
+    override fun logout() = firebaseAuth.signOut()
 }

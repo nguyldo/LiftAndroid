@@ -1,17 +1,22 @@
 package com.nguyendo.lift.ui.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
+import com.nguyendo.lift.data.model.User
 import com.nguyendo.lift.data.repo.AuthRepo
+import com.nguyendo.lift.data.repo.UserRemoteRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authRepo: AuthRepo
+    private val authRepo: AuthRepo,
+    private val userRemoteRepo: UserRemoteRepo
 ) : ViewModel() {
     fun user(): FirebaseUser? = authRepo.getUser()
 
@@ -21,10 +26,10 @@ class AuthViewModel @Inject constructor(
     ) {
         authRepo.login(email, password)
             .addOnSuccessListener {
-                TODO("nav to post-auth")
+                Log.d("AuthViewModel", "login - success")
             }
-            .addOnFailureListener {
-                TODO("failure message")
+            .addOnFailureListener { e ->
+                Log.d("AuthViewModel", e.toString())
             }
     }
 
@@ -36,10 +41,25 @@ class AuthViewModel @Inject constructor(
     ) {
         authRepo.register(email, password)
             .addOnSuccessListener {
-                TODO("add user to database and nav to post-auth")
+                val user = User(
+                    id = UUID.randomUUID().toString(),
+                    email = email,
+                    username = username,
+                    name = name,
+                    workouts = emptyList()
+                )
+                try {
+                    userRemoteRepo.addUserDetails(user)
+                } catch (e: Exception) {
+                    TODO("show error")
+                }
             }
-            .addOnFailureListener {
-                TODO("failure message")
+            .addOnFailureListener { e ->
+                Log.d("AuthViewModel", e.toString())
             }
+    }
+
+    fun signout() {
+        authRepo.logout()
     }
 }
