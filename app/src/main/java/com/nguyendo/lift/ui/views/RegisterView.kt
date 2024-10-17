@@ -18,7 +18,7 @@ import com.nguyendo.lift.ui.nav.AuthScreens
 import com.nguyendo.lift.ui.viewmodel.AuthViewModel
 
 @Composable
-fun LoginView(
+fun RegisterView(
     viewModel: AuthViewModel,
     navController: NavController
 ) {
@@ -29,16 +29,18 @@ fun LoginView(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Button(onClick = {
-                viewModel.login(
-                    email = "nguyldo@gmail.com",
-                    password = "Test123$"
+                viewModel.register(
+                    email = "androidtest@test.com",
+                    password = "Test123$",
+                    username = "androidtest",
+                    name = "Android Test"
                 ).also {
                     navController.navigate(AuthScreens.PostAuth) {
-                        popUpTo(0){}
+                        popUpTo(0) {}
                     }
                 }
             }) {
-                Text(stringResource(R.string.auth_login))
+                Text(stringResource(R.string.auth_register))
             }
         }
     }
