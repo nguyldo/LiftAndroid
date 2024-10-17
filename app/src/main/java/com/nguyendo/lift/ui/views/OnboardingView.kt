@@ -12,15 +12,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.nguyendo.lift.ui.viewmodel.AuthViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.nguyendo.lift.R
+import com.nguyendo.lift.ui.nav.AuthScreens.Login
+import com.nguyendo.lift.ui.nav.AuthScreens.Register
 
 /*
 * Initial onboarding view with buttons to login or register
 * */
 @Composable
 fun OnboardingView(
-    viewModel: AuthViewModel = viewModel()
+    viewModel: AuthViewModel,
+    navController: NavController
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
@@ -31,34 +34,22 @@ fun OnboardingView(
             // Title
             Text(stringResource(R.string.auth_title))
 
-            if (viewModel.user() == null) {
-                // Login
-                Button(onClick = {
-                    viewModel.login(
-                        email = "nguyldo@gmail.com",
-                        password = "Test123$"
-                    )
-                }) {
-                    Text(stringResource(R.string.auth_login))
-                }
+            Button(onClick = {
+                navController.navigate(Login)
+            }) {
+                Text(stringResource(R.string.auth_login))
+            }
 
-                // Register
-                Button(onClick = {
-                    viewModel.register(
-                        email = "androidtest@test.com",
-                        password = "Test123$",
-                        username = "androidtest",
-                        name = "Android Test"
-                    )
-                }) {
-                    Text(stringResource(R.string.auth_register))
-                }
-            } else {
-                Button(onClick = {
-                    viewModel.signout()
-                }) {
-                    Text("Sign Out")
-                }
+            Button(onClick = {
+                navController.navigate(Register)
+            }) {
+                Text(stringResource(R.string.auth_register))
+            }
+
+            Button(onClick = {
+                viewModel.signout()
+            }) {
+                Text("Sign Out")
             }
         }
     }
