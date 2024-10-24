@@ -1,6 +1,7 @@
 package com.nguyendo.lift.ui.nav
 
 import android.util.Log
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -29,7 +30,7 @@ fun AppStartNavHost(
         startDestination = if (userLoggedIn) PostAuth else Onboarding,
     ) {
         composable<AuthScreens.Onboarding> {
-            OnboardingView(viewModel = authViewModel, navController = navController)
+            OnboardingView(navController = navController)
         }
         composable<Login> {
             LoginView(viewModel = authViewModel, navController = navController)
@@ -38,7 +39,7 @@ fun AppStartNavHost(
             RegisterView(viewModel = authViewModel, navController = navController)
         }
         composable<PostAuth> {
-            PostAuthNavHost(logout = {
+            PostAuthNavGraph(logout = {
                 authViewModel.signout()
                 navController.navigate(Onboarding) {
                     popUpTo(0) {}

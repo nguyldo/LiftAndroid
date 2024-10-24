@@ -23,13 +23,17 @@ class AuthViewModel @Inject constructor(
     fun login(
         email: String,
         password: String,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit
     ) {
         authRepo.login(email, password)
             .addOnSuccessListener {
                 Log.d("AuthViewModel", "login - success")
+                onSuccess()
             }
             .addOnFailureListener { e ->
                 Log.d("AuthViewModel", e.toString())
+                onFailure()
             }
     }
 
@@ -38,6 +42,8 @@ class AuthViewModel @Inject constructor(
         password: String,
         username: String,
         name: String,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit
     ) {
         authRepo.register(email, password)
             .addOnSuccessListener {
@@ -50,12 +56,14 @@ class AuthViewModel @Inject constructor(
                 )
                 try {
                     userRemoteRepo.addUserDetails(user)
+                    onSuccess()
                 } catch (e: Exception) {
                     TODO("show error")
                 }
             }
             .addOnFailureListener { e ->
                 Log.d("AuthViewModel", e.toString())
+                onFailure
             }
     }
 
