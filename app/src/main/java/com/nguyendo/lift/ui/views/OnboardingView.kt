@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.nguyendo.lift.ui.viewmodel.AuthViewModel
 import androidx.navigation.NavController
 import com.nguyendo.lift.R
 import com.nguyendo.lift.ui.nav.AuthScreens.Login

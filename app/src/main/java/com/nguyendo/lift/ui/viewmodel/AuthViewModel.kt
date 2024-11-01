@@ -10,6 +10,7 @@ import com.nguyendo.lift.data.model.User
 import com.nguyendo.lift.data.repo.AuthRepo
 import com.nguyendo.lift.data.repo.UserRemoteRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.ArrayList
 import java.util.UUID
 import javax.inject.Inject
 
@@ -52,7 +53,7 @@ class AuthViewModel @Inject constructor(
                     email = email,
                     username = username,
                     name = name,
-                    workouts = emptyList()
+                    workouts = ArrayList()
                 )
                 try {
                     userRemoteRepo.addUserDetails(user)
