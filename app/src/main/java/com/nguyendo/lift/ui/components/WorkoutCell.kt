@@ -1,6 +1,5 @@
 package com.nguyendo.lift.ui.components
 
-import androidx.annotation.ColorLong
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

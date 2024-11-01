@@ -53,7 +53,6 @@ fun PostAuthNavGraph(
                 navigation<Workouts>(startDestination = WorkoutsHome) {
                     composable<WorkoutsHome> {
                         topBarTitle = stringResource(R.string.workouts_title)
-                        // Log.d("PostAuthNavGraph", navController.currentBackStackEntry.toString())
                         FeedView(postAuthViewModel, userId)
                     }
                     composable<CreateWorkout> {
