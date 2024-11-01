@@ -9,4 +9,10 @@
     <string name="auth_password">Password</string>
     <string name="auth_username">Username</string>
     <string name="auth_name">Name</string>
+
+    <!-- workouts -->
+    <string name="workouts_title">Workouts</string>
+
+    <!-- profile -->
+    <string name="profile_title">Profile</string>
 </resources>

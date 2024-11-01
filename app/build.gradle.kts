@@ -87,7 +87,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.fragment)
     implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.material)
+    // implementation(libs.androidx.material)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

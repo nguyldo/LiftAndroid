@@ -1,7 +1,6 @@
 package com.nguyendo.lift.ui.nav
 
 import android.util.Log
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -17,7 +16,7 @@ import com.nguyendo.lift.ui.nav.AuthScreens.Register
 import com.nguyendo.lift.ui.nav.AuthScreens.PostAuth
 
 @Composable
-fun AppStartNavHost(
+fun AppStartNavGraph(
     viewModel: AuthViewModel
 ) {
     val navController = rememberNavController()
@@ -39,12 +38,15 @@ fun AppStartNavHost(
             RegisterView(viewModel = authViewModel, navController = navController)
         }
         composable<PostAuth> {
-            PostAuthNavGraph(logout = {
-                authViewModel.signout()
-                navController.navigate(Onboarding) {
-                    popUpTo(0) {}
-                }
-            })
+            PostAuthNavGraph(
+                logout = {
+                    authViewModel.signout()
+                    navController.navigate(Onboarding) {
+                        popUpTo(0) {}
+                    }
+                },
+                userId = viewModel.user()!!.uid
+            )
         }
     }
 }
