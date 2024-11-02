@@ -20,7 +20,6 @@ class PostAuthViewModel @Inject constructor(
     private val userRemoteRepo: UserRemoteRepo,
     private val workoutsRemoteRepo: WorkoutsRemoteRepo
 ) : ViewModel() {
-
     private val _userDetailsState = MutableStateFlow<User?>(null)
     val userDetailsState: StateFlow<User?> = _userDetailsState
 
@@ -42,7 +41,12 @@ class PostAuthViewModel @Inject constructor(
     fun fetchWorkouts(userId: String) {
         viewModelScope.launch {
             try {
-                val workouts = workoutsRemoteRepo.getWorkouts(listOf(userId))
+                val workouts =
+                    workoutsRemoteRepo
+                        .getWorkouts(listOf(userId))
+                        .sortedByDescending {
+                            it.timestamp
+                        }
                 _workoutsState.value = workouts
                 Log.d("PostAuthViewModel", workouts.toString())
             } catch (e: Exception) {

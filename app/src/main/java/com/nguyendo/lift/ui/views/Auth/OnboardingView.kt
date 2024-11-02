@@ -1,4 +1,4 @@
-package com.nguyendo.lift.ui.views
+package com.nguyendo.lift.ui.views.Auth
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

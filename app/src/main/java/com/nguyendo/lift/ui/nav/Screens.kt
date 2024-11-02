@@ -22,11 +22,26 @@ sealed class AuthScreens {
     object PostAuth
 }
 
-@Serializable
 sealed class PostAuthScreens {
     @Serializable
-    object Feed : PostAuthScreens()
+    object Workouts : PostAuthScreens()
 
     @Serializable
     object Profile : PostAuthScreens()
+}
+
+sealed class WorkoutsScreens {
+    @Serializable
+    object WorkoutsHome : WorkoutsScreens()
+
+    @Serializable
+    object WorkoutDetails : WorkoutsScreens()
+
+    @Serializable
+    object CreateWorkout : WorkoutsScreens()
+}
+
+sealed class ProfileScreens {
+    @Serializable
+    object ProfileHome : ProfileScreens()
 }

@@ -46,8 +46,9 @@ fun TabBar(navController: NavController) {
                 selected = currentDestination?.hierarchy?.any { it.hasRoute(tab.route::class) } == true,
                 onClick = {
                     navController.navigate(tab.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
+                        popUpTo(tab.route) {
+                            inclusive = true
+                            // navController.graph.findStartDestination().id
                         }
                         launchSingleTop = true
                         restoreState = true
@@ -71,7 +72,7 @@ sealed class Tab(
     val icon: ImageVector
 ) {
     object Feed : Tab(
-        route = PostAuthScreens.Feed,
+        route = PostAuthScreens.Workouts,
         label = "Workouts",
         icon = Icons.Default.Home
     )
