@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.nguyendo.lift.ui.viewmodel.AuthViewModel
 import androidx.navigation.compose.composable
-import com.nguyendo.lift.ui.views.LoginView
-import com.nguyendo.lift.ui.views.OnboardingView
-import com.nguyendo.lift.ui.views.RegisterView
+import com.nguyendo.lift.ui.views.Auth.LoginView
+import com.nguyendo.lift.ui.views.Auth.OnboardingView
+import com.nguyendo.lift.ui.views.Auth.RegisterView
 import com.nguyendo.lift.ui.nav.AuthScreens.Onboarding
 import com.nguyendo.lift.ui.nav.AuthScreens.Login
 import com.nguyendo.lift.ui.nav.AuthScreens.Register
