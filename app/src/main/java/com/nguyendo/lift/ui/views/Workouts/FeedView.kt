@@ -1,13 +1,13 @@
-package com.nguyendo.lift.ui.views
+package com.nguyendo.lift.ui.views.Workouts
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.background
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.nguyendo.lift.ui.components.WorkoutCell
 import com.nguyendo.lift.ui.viewmodel.PostAuthViewModel
 
@@ -22,9 +22,9 @@ fun FeedView(
 
     val workoutsState by postAuthViewModel.workoutsState.collectAsState()
 
-    LazyColumn {
+    LazyColumn(userScrollEnabled = true) {
         items(workoutsState.size) { index ->
-            WorkoutCell(workoutsState.get(index))
+            WorkoutCell(workoutsState[index])
         }
     }
 }
