@@ -25,8 +25,11 @@ object FirebaseModule {
 
     @Provides
     fun provideWorkoutsRemoteRepo(): WorkoutsRemoteRepo = WorkoutsRemoteRepoImpl(
-        provideFirebaseFirestore()
+        provideFirebaseFirestore(),
     )
+
+    @Provides
+    fun provideCreateWorkoutService(): CreateWorkoutService = CreateWorkoutServiceImpl()
 
     @Provides
     @Singleton

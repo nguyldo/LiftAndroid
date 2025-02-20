@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
+import com.nguyendo.lift.data.model.ExerciseMapping
 import com.nguyendo.lift.data.model.Workout
 import com.nguyendo.lift.data.repo.WorkoutsRemoteRepo
 import kotlinx.coroutines.launch
@@ -26,6 +27,9 @@ class PostAuthViewModel @Inject constructor(
     private val _workoutsState = MutableStateFlow<List<Workout>>(emptyList())
     val workoutsState: StateFlow<List<Workout>> = _workoutsState
 
+    private val _exerciseListState = MutableStateFlow<List<ExerciseMapping>>(emptyList())
+    val exerciseListState: StateFlow<List<ExerciseMapping>> = _exerciseListState
+
     fun fetchUserDetails(userId: String) {
         viewModelScope.launch {
             try {
@@ -34,6 +38,16 @@ class PostAuthViewModel @Inject constructor(
             } catch (e: Exception) {
                 Log.d("PostAuthViewModel", e.toString())
                 _userDetailsState.value = null
+            }
+        }
+    }
+
+    fun fetchExercisesList() {
+        viewModelScope.launch {
+            try {
+                _exerciseListState.value = workoutsRemoteRepo.getExerciseList()
+            } catch (e: Exception) {
+                Log.d("PostAuthViewModel", e.toString())
             }
         }
     }

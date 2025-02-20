@@ -12,7 +12,7 @@
 
     <!-- workouts -->
     <string name="workouts_title">Workouts</string>
-    <string name="create_workout_title">Create New Workout</string>
+    <string name="create_workout_title">New Workout</string>
 
     <!-- profile -->
     <string name="profile_title">Profile</string>
