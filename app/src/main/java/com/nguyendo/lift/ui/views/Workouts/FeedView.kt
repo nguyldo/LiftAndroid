@@ -18,6 +18,7 @@ fun FeedView(
 ) {
     LaunchedEffect(userId) {
         postAuthViewModel.fetchWorkouts(userId)
+        postAuthViewModel.fetchExercisesList()
     }
 
     val workoutsState by postAuthViewModel.workoutsState.collectAsState()

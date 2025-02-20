@@ -22,6 +22,7 @@ import com.nguyendo.lift.ui.nav.WorkoutsScreens.WorkoutsHome
 import com.nguyendo.lift.ui.nav.WorkoutsScreens.WorkoutDetails
 import com.nguyendo.lift.ui.nav.WorkoutsScreens.CreateWorkout
 import com.nguyendo.lift.ui.nav.ProfileScreens.ProfileHome
+import com.nguyendo.lift.ui.viewmodel.CreateWorkoutViewModel
 import com.nguyendo.lift.ui.viewmodel.PostAuthViewModel
 import com.nguyendo.lift.ui.views.Workouts.FeedView
 import com.nguyendo.lift.ui.views.Profile.ProfileView
@@ -35,6 +36,7 @@ fun PostAuthNavGraph(
 ) {
     val navController = rememberNavController()
     val postAuthViewModel: PostAuthViewModel = hiltViewModel<PostAuthViewModel>()
+    val createWorkoutViewModel: CreateWorkoutViewModel = hiltViewModel<CreateWorkoutViewModel>()
     var topBarTitle by remember { mutableStateOf("") }
 
     Scaffold(
@@ -57,7 +59,7 @@ fun PostAuthNavGraph(
                     }
                     composable<CreateWorkout> {
                         topBarTitle = stringResource(R.string.create_workout_title)
-                        CreateWorkout()
+                        CreateWorkout(createWorkoutViewModel, postAuthViewModel, { navController.navigateUp() })
                     }
                     composable<WorkoutDetails> {
                         WorkoutDetailsView()
